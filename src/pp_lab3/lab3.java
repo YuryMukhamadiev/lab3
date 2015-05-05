@@ -11,7 +11,49 @@ public class lab3 {
             "[ןֿ]ÿע[üט]הוסÿע.?.?", "[ר״]וסע[üט]הוסÿע.?.?", "[סׁ]ול[üט]הוסÿע.?.?", "[גֲ]מסול[üט]הוסÿע.?.?", "[הִ]וגÿםמסע."};
     private static String houndred[] = {"0", "[סׁ]ע..?", "[הִ]ג[וף].?ס.?ע.?", "[עׂ]נ[ו¸ט].?ס.?ע.?", "[ק׳]ועûנ[ו¸].?ס.?ע.?",
             "[ןֿ]ÿע[טü]ס.?ע.?", "[ר״]וסע[טü]ס.?ע.?", "[סׁ]ול[üט]ס.?ע.?", "[גֲ]מסול[üט]ס.?ע.?", "[הִ]וגÿע[üט]ס.?ע.?"};
-
+    
+    private static boolean flag = false;
+    private static int num = 0;
+    public static void print(String word) {
+        for (int i = 0; i < 10; i++) {
+            if (word.matches(houndred[i])) {
+                num += i * 100;
+                flag = true;
+                return;
+            }
+        }
+        for (int i = 0; i < 10; i++) {
+            if (word.matches(ten[i])) {
+                num += i * 10;
+                flag = true;
+                return;
+            }
+        }
+        for (int i = 0; i < 10; i++) {
+            if (word.matches(teen[i])) {
+                num += 10 + i;
+                flag = true;
+                return;
+            }
+        }
+        for (int i = 0; i < 10; i++) {
+            if (word.matches(digit[i])) {
+                num += i;
+                flag = true;
+                return;
+            }
+        }
+        if (word.matches("[ׁ‚׀¢]ׁ‹ׁׁׁ‡.?")) {
+            num *= 1000;
+            return;
+        }
+        if (flag) {
+            System.out.print(num + " " );
+            num = 0;
+            flag = false;
+        }
+        System.out.print(word + " ");
+    }
 }
 
 
