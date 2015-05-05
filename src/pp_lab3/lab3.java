@@ -54,6 +54,30 @@ public class lab3 {
         }
         System.out.print(word + " ");
     }
+    public static void main(String[] args) {
+        File file = new File("/home/alex/data.txt" );
+        String line = "Один";
+        try {
+            BufferedReader br = new BufferedReader(
+                    new InputStreamReader(
+                            new FileInputStream(file), "UTF-8"
+                    )
+            );
+            while ((line = br.readLine()) != null) {
+                String word[] = line.split(" " );
+                for (int i = 0; i < word.length; i++)
+                    print(word[i]);
+                System.out.println();
+            }
+            br.close();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
 
 
