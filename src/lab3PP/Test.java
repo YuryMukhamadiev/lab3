@@ -48,11 +48,11 @@ public class Test {
             num *= 1000;
             return;
         }
-        if (!flag) {
-            System.out.print(num + " " );
+      /*  if (!flag) {
+           System.out.print(num + " " );
             num = 0;
             flag = false;
-        }
+        }*/
         System.out.print(word + " ");
     }
     public static void main(String[] args) {
@@ -68,8 +68,10 @@ public class Test {
                 String word[] = line.split(" ");
                 for (int i = 0; i < word.length; i++)
                 {
-                    print(word[i]);
-                System.out.println(num);
+                    
+                    	print(word[i]);
+                    	if(num==0) continue;
+                    	System.out.print(num+" ");
                 }
             }
             br.close();
