@@ -1,8 +1,8 @@
-package pp_lab3;
+package lab3PP;
 
 import java.io.*;
 
-public class lab3 {
+public class Test {
     private static String digit[] = {"[нЌ]оль", "[оќ]д...?", "[дƒ]в..?", "[т“]р..?", "[ч„]етыр..?",
             "[пѕ]€т..?", "[шЎ]ест..?", "[с—]ем..?", "[в¬]осем..?", "[дƒ]ев€т..?" };
     private static String teen[] = {"[дƒ]ес€т..?", "[оќ]диннадцат..?", "[дƒ]венадцат..?", "[т“]ринадцат..?", "[ч„]етырнадцат..?",
@@ -15,6 +15,7 @@ public class lab3 {
     private static boolean flag = false;
     private static int num = 0;
     public static void print(String word) {
+    	num = 0;
         for (int i = 0; i < 10; i++) {
             if (word.matches(houndred[i])) {
                 num += i * 100;
@@ -43,11 +44,11 @@ public class lab3 {
                 return;
             }
         }
-        if (word.matches("[—В–Ґ]—Л—Б—П—З.?")) {
+        if (word.matches("[т“]ыс€ч.?")) {
             num *= 1000;
             return;
         }
-        if (flag) {
+        if (!flag) {
             System.out.print(num + " " );
             num = 0;
             flag = false;
@@ -55,8 +56,8 @@ public class lab3 {
         System.out.print(word + " ");
     }
     public static void main(String[] args) {
-        File file = new File("/home/alex/data.txt" );
-        String line = "–Ю–і–Є–љ";
+        File file = new File("test.txt" );
+        String line = "ќдин";
         try {
             BufferedReader br = new BufferedReader(
                     new InputStreamReader(
@@ -64,10 +65,12 @@ public class lab3 {
                     )
             );
             while ((line = br.readLine()) != null) {
-                String word[] = line.split(" " );
+                String word[] = line.split(" ");
                 for (int i = 0; i < word.length; i++)
+                {
                     print(word[i]);
-                System.out.println();
+                System.out.println(num);
+                }
             }
             br.close();
         } catch (UnsupportedEncodingException e) {
